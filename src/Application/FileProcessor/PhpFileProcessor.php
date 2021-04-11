@@ -23,7 +23,6 @@ use Rector\Core\ValueObject\Application\File;
 use Rector\Core\ValueObject\Application\ParsedStmtsAndTokens;
 use Rector\NodeTypeResolver\FileSystem\CurrentFileInfoProvider;
 use Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator;
-use Rector\PostRector\Application\PostFileProcessor;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\PackageBuilder\Reflection\PrivatesAccessor;
@@ -138,7 +137,6 @@ final class PhpFileProcessor implements FileProcessorInterface
         Lexer $lexer,
         NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator,
         Parser $parser,
-        PostFileProcessor $postFileProcessor,
         RectorNodeTraverser $rectorNodeTraverser,
         TokensByFilePathStorage $tokensByFilePathStorage
     ) {
