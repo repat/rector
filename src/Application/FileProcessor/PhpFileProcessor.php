@@ -75,11 +75,6 @@ final class PhpFileProcessor implements FileProcessorInterface
     private $affectedFilesCollector;
 
     /**
-     * @var PostFileProcessor
-     */
-    private $postFileProcessor;
-
-    /**
      * @var TokensByFilePathStorage
      */
     private $tokensByFilePathStorage;
@@ -162,7 +157,6 @@ final class PhpFileProcessor implements FileProcessorInterface
         $this->nodeScopeAndMetadataDecorator = $nodeScopeAndMetadataDecorator;
         $this->currentFileInfoProvider = $currentFileInfoProvider;
         $this->affectedFilesCollector = $affectedFilesCollector;
-        $this->postFileProcessor = $postFileProcessor;
         $this->tokensByFilePathStorage = $tokensByFilePathStorage;
     }
 
