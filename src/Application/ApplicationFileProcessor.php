@@ -74,7 +74,7 @@ final class ApplicationFileProcessor
     private function processFiles(array $files): void
     {
         foreach ($this->fileProcessors as $fileProcessor) {
-            $supportedFiles = array_filter($files, function (File $file) use ($fileProcessor) {
+            $supportedFiles = array_filter($files, function (File $file) use ($fileProcessor): bool {
                 return $fileProcessor->supports($file);
             });
 

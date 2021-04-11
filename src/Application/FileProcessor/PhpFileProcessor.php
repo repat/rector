@@ -370,25 +370,6 @@ final class PhpFileProcessor implements FileProcessorInterface
         $this->tokensByFilePathStorage->addForRealPath($fileInfo, $parsedStmtsAndTokens);
     }
 
-    private function postFileRefactor(File $file): void
-    {
-        $smartFileInfo = $file->getSmartFileInfo();
-
-        if (! $this->tokensByFilePathStorage->hasForFileInfo($smartFileInfo)) {
-            $this->parseFileInfoToLocalCache($smartFileInfo);
-        }
-
-        $parsedStmtsAndTokens = $this->tokensByFilePathStorage->getForFileInfo($smartFileInfo);
-
-        $this->currentFileInfoProvider->setCurrentStmts($parsedStmtsAndTokens->getNewStmts());
-        $this->currentFileInfoProvider->setCurrentFileInfo($smartFileInfo);
-
-        $newStmts = $this->postFileProcessor->traverse($parsedStmtsAndTokens->getNewStmts());
-
-        // this is needed for new tokens added in "afterTraverse()"
-        $parsedStmtsAndTokens->updateNewStmts($newStmts);
-    }
-
     private function parseAndTraverseFileInfoToNodes(SmartFileInfo $smartFileInfo): ParsedStmtsAndTokens
     {
         $oldStmts = $this->parser->parseFileInfo($smartFileInfo);
